@@ -29,7 +29,7 @@ done
 curl -fsS "$base/skills/jqsp-drama/API.md" -o "$tmp/skills/jqsp-drama/API.md"
 cp "$tmp/skills/jqsp-drama/API.md" "$tmp/zh-CN/jqsp-drama/API.md"
 
-# A one-line `description:` containing ": " is not valid YAML for strict
+# Guard: a one-line `description:` containing ": " is not valid YAML for strict
 # parsers (skill installers skip the file). Rewrite it as a block scalar; the
 # text itself is unchanged.
 find "$tmp" -name SKILL.md -exec python3 -c '

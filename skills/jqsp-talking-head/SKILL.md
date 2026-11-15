@@ -6,7 +6,7 @@ description: >-
 
 # Talking-head skill (5 styles + post-production)
 
-> **Skill version: 2026-10-28** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
+> **Skill version: 2026-11-15** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
 
 > English edition. The Chinese edition is at `https://jqsp.com/skills/jqsp-talking-head/SKILL.md`.
 > Self-contained: connecting, model choice, pictures, action spec, rendering, polling, post-production and errors are

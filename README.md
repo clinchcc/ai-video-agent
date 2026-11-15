@@ -87,7 +87,7 @@ Every response is `{ "code": 0, "message": "ok", "data": … }`; `code` other th
 | `examples/` | Small shell scripts, all free and read-only: check a key, catalog, model status, voices |
 | `scripts/sync.sh` | Refresh the skill files from jqsp.com |
 
-The site is the source of truth: if this copy and jqsp.com differ, follow jqsp.com. Run `scripts/sync.sh` to update. The only edit the script makes is to the YAML header of three English files (the description is re-wrapped so strict parsers accept it); the text is unchanged.
+The site is the source of truth: if this copy and jqsp.com differ, follow jqsp.com. Run `scripts/sync.sh` to update. The files here are byte-for-byte what the site serves.
 
 ## Main endpoints
 

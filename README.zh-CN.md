@@ -87,7 +87,7 @@ curl -s https://jqsp.com/api/v1/catalog -H "Authorization: Bearer $JQSP_API_KEY"
 | `examples/` | 几个 shell 小脚本，全部免费、只读：检查 Key、目录、模型状态、音色 |
 | `scripts/sync.sh` | 从 jqsp.com 更新技能文件 |
 
-以网站为准：这里的副本和 jqsp.com 不一致时，按 jqsp.com 的来，运行 `scripts/sync.sh` 更新。脚本只改了三个英文文件的 YAML 头（把 description 换了一种写法，让严格的解析器能读），正文不变。
+以网站为准：这里的副本和 jqsp.com 不一致时，按 jqsp.com 的来，运行 `scripts/sync.sh` 更新。这里的文件与网站上的逐字节相同。
 
 ## 主要接口
 
