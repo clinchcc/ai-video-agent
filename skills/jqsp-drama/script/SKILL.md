@@ -42,14 +42,20 @@ buttons **5 s / 10 s / 15 s** (default 15). This is the project setting
 follows the text length), and the breakdown doesn't ask again. Omitted means
 15.
 
+Ask about video quality at the same time (project setting `videoQuality`;
+every shot then renders on that tier's workflow, all at the same price): five
+buttons **Cinematic (default) / Ultra HD / Enhanced / Fast / Original**, i.e.
+`cinema` / `ultra` / `upgraded` / `fast` / `original`. If the human has no
+preference, use `cinema`; omitted also means `cinema`. PATCH can change it later.
+
 ```
 POST /api/v1/drama/projects
-{"title":"Dockside Mystery","concept":"<source text or premise>","aspect":"9:16","chapterCount":12,"shotSeconds":15}
-→ {"id":"P1","aspect":"9:16","chapterCount":12,"shotSeconds":15,"content":{"title":"Dockside Mystery",…}}
+{"title":"Dockside Mystery","concept":"<source text or premise>","aspect":"9:16","chapterCount":12,"shotSeconds":15,"videoQuality":"cinema"}
+→ {"id":"P1","aspect":"9:16","videoQuality":"cinema","chapterCount":12,"shotSeconds":15,"content":{"title":"Dockside Mystery",…}}
 ```
 
 Edit: `PATCH /api/v1/drama/projects/P1` (same fields; `shotSeconds` must be 5,
-10 or 15, anything else returns 400).
+10 or 15 and `videoQuality` one of the five values above; anything else returns 400).
 
 2a. Chapter-by-chapter script already written → incremental import (preview first)
 

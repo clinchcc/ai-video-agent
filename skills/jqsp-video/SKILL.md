@@ -6,7 +6,7 @@ description: >-
 
 # Fully automatic video workshop (jqsp-video)
 
-> **Skill version: 2026-11-15** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
+> **Skill version: 2026-11-25** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
 
 > English edition. The Chinese edition is at `https://jqsp.com/skills/jqsp-video/SKILL.md`.
 > The entry point for every public jqsp API is `https://jqsp.com/skills/en/jqsp-drama/SKILL.md`
@@ -66,22 +66,25 @@ options.
 
 1. Candidates = models whose `durations` include `duration` and whose
    `cost[duration]` > 0.
-2. Orientation: for `aspect=9:16` prefer a `resolution` containing "竖"
+2. Quality tier: each model carries `quality` — `cinema` (Cinematic,
+   default) / `ultra` (Ultra HD) / `upgraded` (Enhanced) / `fast` (Fast) /
+   `original` (Original), all at the same price. If the human names a tier,
+   pick only within it; otherwise use `cinema`. Widen to all models only when
+   that tier has no fitting one.
+3. Orientation: for `aspect=9:16` prefer a `resolution` containing "竖"
    (portrait) or `aspectRatios` containing `9:16`; for `16:9` prefer "横"
    (landscape) or `16:9`.
-3. **Quality defaults to 480p**: among those, prefer a `resolution` starting
-   with `480p` (currently `wf:autodl-h3-i2v-15s` for 9:16 and
-   `wf:autodl-h3-480p-landscape` for 16:9, but trust the catalog, never
-   hard-code); then the `default: true` one if any; otherwise the lowest
+4. **Resolution defaults to 480p**: among those, prefer a `resolution`
+   starting with `480p` (trust the catalog, never hard-code ids); then the `default: true` one if any; otherwise the lowest
    `cost[duration]`; on a tie, the one earlier in the list. Use 768p
    (`resolution: "768p"`) only when the human asks for higher quality — don't
    offer it.
-4. Note the **fallback order** = the remaining candidates by ascending price.
+5. Note the **fallback order** = the remaining candidates by ascending price.
    Only when submitting the render returns `503` (that workflow is currently
    unavailable) may you move to the next one in this order, after checking the
    new price still fits the budget; **otherwise never switch model / workflow
    on your own**.
-5. No candidates → stop and report the available `durations` /
+6. No candidates → stop and report the available `durations` /
    `aspectRatios` to the user.
 
 ## 3. Step 2: reference pictures (at least 1)

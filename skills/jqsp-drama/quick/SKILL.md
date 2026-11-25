@@ -163,11 +163,19 @@ HUMAN** to confirm before starting.
 
 Existing projects: `GET /api/v1/drama/projects?mode=quick15` lists the medium
 videos; **with more than one, you must ask the human which** — never pick
-yourself. New:
+yourself. Before creating one, ask about quality:
+
+Ask about video quality at the same time (project setting `videoQuality`;
+every shot then renders on that tier's workflow, all at the same price): five
+buttons **Cinematic (default) / Ultra HD / Enhanced / Fast / Original**, i.e.
+`cinema` / `ultra` / `upgraded` / `fast` / `original`. If the human has no
+preference, use `cinema`; omitted also means `cinema`. PATCH can change it later.
+
+New:
 
 ```bash
 curl -X POST "$BASE/api/v1/drama/quick/projects" -H "Authorization: Bearer $KEY" -H 'content-type: application/json' \
-  -d '{"title":"Rooftop in the Rain","brief":"urban mystery, two people face off on a rooftop","shotSeconds":15,"targetMinutes":3,"aspect":"16:9"}'
+  -d '{"title":"Rooftop in the Rain","brief":"urban mystery, two people face off on a rooftop","shotSeconds":15,"targetMinutes":3,"aspect":"16:9","videoQuality":"cinema"}'
 # → project details (same as GET /api/v1/drama/quick/projects/{id}): settings, progress, addShot, assets[], shots[]
 ```
 

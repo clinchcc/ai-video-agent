@@ -87,11 +87,14 @@ description: 用激情视频的 Drama Agent API 全自动做「中视频」（15
 ### 1. 建项目（或选已有项目）
 
 已有项目：`GET /api/v1/drama/projects?mode=quick15` 列出中视频项目，**超过一个时必须问人选哪个**，
-不要自己挑。新建：
+不要自己挑。新建前问画质：
+
+同时问画质（项目设置 `videoQuality`，之后每个镜头都用这个画质的工作流渲染，价格都一样）：给五个按钮 **影视画质（默认）/ 超清画质 / 升级画质 / 高速版 / 原版**，对应 `cinema` / `ultra` / `upgraded` / `fast` / `original`。人说随便或没意见就用 `cinema`，不传也是 `cinema`。之后可以用 PATCH 改。
+
 
 ```bash
 curl -X POST "$BASE/api/v1/drama/quick/projects" -H "Authorization: Bearer $KEY" -H 'content-type: application/json' \
-  -d '{"title":"雨夜天台","brief":"都市悬疑，两人在天台对峙","shotSeconds":15,"targetMinutes":3,"aspect":"16:9"}'
+  -d '{"title":"雨夜天台","brief":"都市悬疑，两人在天台对峙","shotSeconds":15,"targetMinutes":3,"aspect":"16:9","videoQuality":"cinema"}'
 # → 项目详情（与 GET /api/v1/drama/quick/projects/{id} 相同）：settings、progress、addShot、assets[]、shots[]
 ```
 

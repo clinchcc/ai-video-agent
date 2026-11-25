@@ -35,19 +35,20 @@ endpoints this skill uses in its "Production" section).
    scenes / props exist.
 2. The key has `read` + `write`; spending credits also needs `charge`. There
    may be a daily credit cap (exceeded → 403 `daily_credit_cap_exceeded`).
-3. **Video defaults to 480p — don't ask the human about quality or the video
-   model**. Take the video model from `videos.models` in `GET /api/v1/catalog`
-   (ids start with `wf:`): the 480p one (`resolution` starting with `480p`)
-   whose `aspectRatios` include the project's aspect (`aspect` in
-   `GET /api/v1/drama/projects/$P`) — currently `wf:autodl-h3-i2v-15s` for
-   9:16 and `wf:autodl-h3-480p-landscape` for 16:9, but always trust the
-   catalog, never hard-code. When production starts, tell the human once:
+3. **Video defaults to 480p on the project's quality tier (`videoQuality`,
+   asked when the project was created) — don't ask the human about quality or
+   the video model during production**. Take the video model from
+   `videos.models` in `GET /api/v1/catalog` (ids start with `wf:`): the one
+   whose `quality` equals the project's `videoQuality`, at 480p (`resolution`
+   starting with `480p`), whose `aspectRatios` include the project's aspect
+   (`aspect` in `GET /api/v1/drama/projects/$P`) — always trust the catalog,
+   never hard-code ids. When production starts, tell the human once:
    "Videos default to 480p, with a landscape / portrait model picked from the
    project's aspect ratio; say so if you want higher definition" — don't wait
    for an answer and don't make buttons for quality or video model; switch to
    768p only when the human asks for higher quality. `videoModelId` may be
    omitted on `render`, `estimate` and `pipeline/run`: omitted means the 480p
-   model matching the project aspect, and the dryRun / estimate response gives
+   model of the project's tier matching the project aspect, and the dryRun / estimate response gives
    the id actually used — mention it with the quote. An explicit model whose
    aspect doesn't match the project is blocked (blocker
    `video_aspect_mismatch`); a model that doesn't support the chosen duration

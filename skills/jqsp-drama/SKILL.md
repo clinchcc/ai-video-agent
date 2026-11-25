@@ -6,7 +6,7 @@ description: >-
 
 # Short-drama production Agent (overview)
 
-> **Skill version: 2026-11-15** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
+> **Skill version: 2026-11-25** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
 
 > English edition. The Chinese edition is at `https://jqsp.com/skills/jqsp-drama/SKILL.md`.
 > The platform itself answers in Chinese: refusal `message`s, task errors and

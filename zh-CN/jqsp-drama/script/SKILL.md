@@ -25,13 +25,15 @@ API 返回的 `content` 里的文字（标题、原稿、剧本、AI 写的内�
 
 建项目前 **ASK THE HUMAN**：每个镜头多长？给三个按钮 **5 秒 / 10 秒 / 15 秒**（默认 15）。这是项目设置 `shotSeconds`：之后每次拆分镜，每个镜头都是这个时长（镜头数按正文长度推算），拆分镜时不再问。不传就是 15。
 
+同时问画质（项目设置 `videoQuality`，之后每个镜头都用这个画质的工作流渲染，价格都一样）：给五个按钮 **影视画质（默认）/ 超清画质 / 升级画质 / 高速版 / 原版**，对应 `cinema` / `ultra` / `upgraded` / `fast` / `original`。人说随便或没意见就用 `cinema`，不传也是 `cinema`。之后可以用 PATCH 改。
+
 ```
 POST /api/v1/drama/projects
-{"title":"码头疑案","concept":"<原稿或设定>","aspect":"9:16","chapterCount":12,"shotSeconds":15}
-→ {"id":"P1","aspect":"9:16","chapterCount":12,"shotSeconds":15,"content":{"title":"码头疑案",…}}
+{"title":"码头疑案","concept":"<原稿或设定>","aspect":"9:16","chapterCount":12,"shotSeconds":15,"videoQuality":"cinema"}
+→ {"id":"P1","aspect":"9:16","videoQuality":"cinema","chapterCount":12,"shotSeconds":15,"content":{"title":"码头疑案",…}}
 ```
 
-修改：`PATCH /api/v1/drama/projects/P1`（同字段；`shotSeconds` 只能是 5、10 或 15，其他值返回 400）。
+修改：`PATCH /api/v1/drama/projects/P1`（同字段；`shotSeconds` 只能是 5、10 或 15，`videoQuality` 只能是上面五个值，其他值返回 400）。
 
 2a. 已有分章剧本 → 增量导入（先预览再执行）
 
