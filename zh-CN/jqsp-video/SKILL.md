@@ -5,7 +5,7 @@ description: 全自动视频工坊——用 jqsp 公开 API（Bearer Key）在�
 
 # 全自动视频工坊（jqsp-video）
 
-> **技能版本：2026-11-27**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
+> **技能版本：2026-11-27.2**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
 
 > English edition: `https://jqsp.com/skills/en/jqsp-video/SKILL.md`.
 

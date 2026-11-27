@@ -148,7 +148,9 @@ automatically; `credits` is what was actually charged.
 **First + last frame**: a `catalog.videos.models[]` entry with `lastFrame: true`
 (e.g. "AutoDL H3 首尾帧") renders the motion between the first frame `imageUrl`
 and the last frame `lastFrameUrl`, guided by `prompt`. It takes no reference
-audio and only the first picture. `aspectRatio` may be `16:9` / `9:16` / `1:1`;
+audio and only the first picture. `duration` may be any whole number of
+seconds from `"1"` to `"15"` (as a string), billed per second (480p: 4
+credits a second; `cost` is authoritative). `aspectRatio` may be `16:9` / `9:16` / `1:1`;
 `resolution: "768p"` is priced with the same multiplier.
 
 Response: `{ id, status, credits, model, modelLabel, duration, aspectRatio, createdAt }`.
