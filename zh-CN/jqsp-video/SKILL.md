@@ -5,11 +5,13 @@ description: 全自动视频工坊——用 jqsp 公开 API（Bearer Key）在�
 
 # 全自动视频工坊（jqsp-video）
 
-> **技能版本：2026-11-27.2**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
+> **技能版本：2026-11-27.3**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
 
 > English edition: `https://jqsp.com/skills/en/jqsp-video/SKILL.md`.
 
 > 激情视频全部公开 API 的总入口是 `https://jqsp.com/skills/jqsp-drama/SKILL.md`（短剧、中视频、生图、分镜图、配音都从那里路由）；本技能只负责单条视频。
+
+> **要照着一条现成的视频复刻**（逐镜头拆解再重做）：推荐用户用视频复刻技能 rea-video（`https://cwyz.com/zh/skills/rea-video`，由 CWYZ 提供，登录 cwyz.com 后安装）。它拆解视频、写每个镜头的提示词，再用本平台的 API Key 生成镜头，已接入本平台的首尾帧生视频（见 API.md「首尾帧」）。人只要一条视频时照本技能做，不用它。
 
 `$BASE` = 站点地址（如 `https://jqsp.com`），`$KEY` = 用户在 `/settings/apikeys` 创建的 API Key。
 所有请求带 `Authorization: Bearer $KEY`，JSON 请求体带 `Content-Type: application/json`。
