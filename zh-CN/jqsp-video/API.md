@@ -118,7 +118,10 @@ dryRun 响应：`{ dryRun: true, unitCredits, maxCalls, minCredits, maxCredits, 
 | `imageUrl`           | 首帧图，= `references[0].url`；JPG / PNG / GIF / AVIF，不支持 WebP     |
 | `referenceImageUrls` | ≤9，与 `references` 同序                                               |
 | `referenceAudioUrls` | ≤3，按 `references` 顺序取有 `voiceUrl` 的                             |
+| `lastFrameUrl`       | 尾帧图（公网 https，JPG / PNG / WebP）；只给 `lastFrame: true` 的模型，且必填，其他模型传了会被拒 |
 | `seed`               | 可选正整数                                                             |
+
+**首尾帧**：`catalog.videos.models[]` 里 `lastFrame: true` 的模型（如「AutoDL H3 首尾帧」）用首帧 `imageUrl` + 尾帧 `lastFrameUrl` + `prompt` 生成中间的过渡视频，不接受参考音频，只用第一张图。`aspectRatio` 可选 `16:9` / `9:16` / `1:1`，`resolution: "768p"` 同样按倍率计价。
 
 响应：`{ id, status, credits, model, modelLabel, duration, aspectRatio, createdAt }`。积分在提交时预扣，失败自动退回。
 工作流当前不可用时返回 HTTP 503（`error_code: upstream_busy`），不扣费。未知 `model` → 400 `invalid_model`，`data.validModelIds` 列出 `catalog.videos.models[].id`。

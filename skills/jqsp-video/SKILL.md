@@ -6,7 +6,7 @@ description: >-
 
 # Fully automatic video workshop (jqsp-video)
 
-> **Skill version: 2026-11-25** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
+> **Skill version: 2026-11-27** (changes with every published update; several updates on one day get a suffix, e.g. `2026-10-28.2`)
 
 > English edition. The Chinese edition is at `https://jqsp.com/skills/jqsp-video/SKILL.md`.
 > The entry point for every public jqsp API is `https://jqsp.com/skills/en/jqsp-drama/SKILL.md`
@@ -65,7 +65,9 @@ options.
 **Deterministic choice** (in order, stop at the first match):
 
 1. Candidates = models whose `durations` include `duration` and whose
-   `cost[duration]` > 0.
+   `cost[duration]` > 0. A model with `lastFrame: true` is a first+last-frame
+   model (it also needs a last-frame picture, `lastFrameUrl`): leave it out
+   unless the person explicitly asks for first+last frame (see API.md).
 2. Quality tier: each model carries `quality` — `cinema` (Cinematic,
    default) / `ultra` (Ultra HD) / `upgraded` (Enhanced) / `fast` (Fast) /
    `original` (Original), all at the same price. If the human names a tier,

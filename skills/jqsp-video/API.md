@@ -142,7 +142,14 @@ automatically; `credits` is what was actually charged.
 | `imageUrl`           | first-frame picture, = `references[0].url`; JPG / PNG / GIF / AVIF, no WebP |
 | `referenceImageUrls` | ≤ 9, in the same order as `references`                                     |
 | `referenceAudioUrls` | ≤ 3, those `references` with a `voiceUrl`, in order                        |
+| `lastFrameUrl`       | last-frame picture (public https, JPG / PNG / WebP); required for, and only accepted by, models with `lastFrame: true` |
 | `seed`               | optional positive integer                                                  |
+
+**First + last frame**: a `catalog.videos.models[]` entry with `lastFrame: true`
+(e.g. "AutoDL H3 首尾帧") renders the motion between the first frame `imageUrl`
+and the last frame `lastFrameUrl`, guided by `prompt`. It takes no reference
+audio and only the first picture. `aspectRatio` may be `16:9` / `9:16` / `1:1`;
+`resolution: "768p"` is priced with the same multiplier.
 
 Response: `{ id, status, credits, model, modelLabel, duration, aspectRatio, createdAt }`.
 Credits are pre-deducted at submission; a failure is refunded automatically.

@@ -5,7 +5,7 @@ description: 全自动视频工坊——用 jqsp 公开 API（Bearer Key）在�
 
 # 全自动视频工坊（jqsp-video）
 
-> **技能版本：2026-11-25**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
+> **技能版本：2026-11-27**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
 
 > English edition: `https://jqsp.com/skills/en/jqsp-video/SKILL.md`.
 
@@ -51,7 +51,7 @@ curl -s "$BASE/api/v1/catalog" -H "Authorization: Bearer $KEY"
 
 **确定性选择规则**（按顺序，选中即停）：
 
-1. 候选 = `durations` 含 `duration` 且 `cost[duration]` > 0 的模型。
+1. 候选 = `durations` 含 `duration` 且 `cost[duration]` > 0 的模型；带 `lastFrame: true` 的是首尾帧模型（要额外传尾帧图 `lastFrameUrl`），不放进候选——只有人明确要「首尾帧」时才用它（见 API.md）。
 2. 画质档位：每个模型带 `quality`——`cinema`（影视画质，默认）/ `ultra`（超清画质）/ `upgraded`（升级画质）/ `fast`（高速版）/ `original`（原版），价格相同。人点名了档位就只在那一档里选，没说就用 `cinema`；这一档没有合适的模型才放宽到全部。
 3. 方向匹配：`aspect=9:16` 优先 `resolution` 含「竖」或 `aspectRatios` 含 `9:16` 的；`16:9` 优先含「横」或 `16:9` 的。
 4. **分辨率默认 480p**：其中优先 `resolution` 以 `480p` 开头的（以目录为准，不要写死 id）；再有 `default: true` 的就用它；否则取 `cost[duration]` 最低的；同价取列表靠前的。只有人主动要求更高画质时才用 768p（`resolution: "768p"`），不要主动问。
