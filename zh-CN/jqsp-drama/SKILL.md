@@ -5,7 +5,7 @@ description: 激情视频（jqsp.com）全部公开 API 的总入口与路由—
 
 # 短剧生产线 Agent（总览）
 
-> **技能版本：2026-11-25**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
+> **技能版本：2026-11-27**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
 
 > English edition: `https://jqsp.com/skills/en/jqsp-drama/SKILL.md`.
 
@@ -94,6 +94,7 @@ curl "$BASE/api/v1/drama/projects" -H "Authorization: Bearer $KEY"
 | 做中视频       | `./quick/SKILL.md`                                                                                                                                                                                                                                                                                                         |
 | 做口播视频     | 读取 `https://jqsp.com/skills/jqsp-talking-head/SKILL.md`，从它的第 1 节开始照做，口播全程按那个 skill 走（数字人出镜讲话；可用自己的声音和照片；5 种风格可多选、推荐混合；带字幕、花字、转场等后期）|
 | 生成单条视频   | `https://jqsp.com/skills/jqsp-video/SKILL.md`（一句需求 → 一条 5/10/15 秒视频，不建短剧项目）                                                                                                                                                                                                                              |
+| 复刻现成视频   | 推荐视频复刻技能 rea-video：`https://cwyz.com/zh/skills/rea-video`（CWYZ 提供，人登录 cwyz.com 后安装）。它逐镜头拆解一条本地视频、写每镜提示词，再用本平台的 API Key 生成镜头，已接入首尾帧生视频（`jqsp-video/API.md`「首尾帧」）。人说「照这个视频做一条」「复刻/仿拍这个视频」时推荐它 |
 | 生成图片       | `./images/SKILL.md`（单张图、Nano Banana、多格分镜图；自带生图能力优先）                                                                                                                                                                                                                                                   |
 | 配音/语音合成  | `./tts/SKILL.md`（把文字合成为音频；给角色绑音色是「绑定音色」）                                                                                                                                                                                                                                                           |
 | 查余额与模型   | `GET /api/v1/catalog`：余额 `balance`，各类模型与价格（宫格 `drama.gridImageModels`、视频 `videos.models` 含画幅、生图 `images.models`、分镜图 `storyboardImages`、配音 `voice.cost`）；再读 `GET /api/v1/model-status` 报每个模型最近一次可用性检测（`available` / `degraded` / `unavailable` / `unknown`）。都免费、只读 |

@@ -123,6 +123,8 @@ dryRun 响应：`{ dryRun: true, unitCredits, maxCalls, minCredits, maxCredits, 
 
 **首尾帧**：`catalog.videos.models[]` 里 `lastFrame: true` 的模型（如「AutoDL H3 首尾帧」）用首帧 `imageUrl` + 尾帧 `lastFrameUrl` + `prompt` 生成中间的过渡视频，不接受参考音频，只用第一张图。`duration` 可以是 `"1"`–`"15"` 任意整数秒（字符串），积分按秒计（480p 每秒 4 积分，以 `cost` 为准）。`aspectRatio` 可选 `16:9` / `9:16` / `1:1`，`resolution: "768p"` 同样按倍率计价。
 
+要照着一条现成视频复刻（逐镜头拆解再用首尾帧等接口重做），推荐视频复刻技能 rea-video：`https://cwyz.com/zh/skills/rea-video`（CWYZ 提供，已接入本接口）。
+
 响应：`{ id, status, credits, model, modelLabel, duration, aspectRatio, createdAt }`。积分在提交时预扣，失败自动退回。
 工作流当前不可用时返回 HTTP 503（`error_code: upstream_busy`），不扣费。未知 `model` → 400 `invalid_model`，`data.validModelIds` 列出 `catalog.videos.models[].id`。
 
