@@ -5,7 +5,7 @@ description: 全自动视频工坊——用 jqsp 公开 API（Bearer Key）在�
 
 # 全自动视频工坊（jqsp-video）
 
-> **技能版本：2026-11-27.3**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
+> **技能版本：2026-11-28**（每次发布更新都会改这个日期；同一天多次更新加序号，如 `2026-10-28.2`）
 
 > English edition: `https://jqsp.com/skills/en/jqsp-video/SKILL.md`.
 
@@ -164,6 +164,7 @@ curl -s -X POST "$BASE/api/v1/videos/prompt" -H "Authorization: Bearer $KEY" -H 
 ```
 render = cost[duration]                                  （resolution=standard）
 render = ceil(cost[duration] × resolution768pMultiplier) （resolution=768p）
+render = cost[duration]                                  （模型带 fixedResolution: "768p"，不论 resolution）
 已花   = 生图 credits 之和 + 提示词 credits
 总计   = 已花 + render
 ```
