@@ -123,7 +123,7 @@ dryRun 响应：`{ dryRun: true, unitCredits, maxCalls, minCredits, maxCredits, 
 
 **首尾帧**：`catalog.videos.models[]` 里 `lastFrame: true` 的模型（如「AutoDL H3 首尾帧」）用首帧 `imageUrl` + 尾帧 `lastFrameUrl` + `prompt` 生成中间的过渡视频，不接受参考音频，只用第一张图。`duration` 可以是 `"1"`–`"15"` 任意整数秒（字符串），积分按秒计（480p 每秒 4 积分，以 `cost` 为准）。`aspectRatio` 可选 `16:9` / `9:16` / `1:1`，`resolution: "768p"` 同样按倍率计价。
 
-**只出 768p 的模型**：带 `fixedResolution: "768p"` 的模型（如「AutoDL H3 极速」）不论传什么 `resolution` 都按 768p 出片，`cost[duration]` 就是最终价格，不再乘 `resolution768pMultiplier`。
+**只出 768p 的模型**：带 `fixedResolution: "768p"` 的模型（如「AutoDL H3 极速」）不论传什么 `resolution` 都按 768p 出片，`cost[duration]` 就是最终价格，不再乘 `resolution768pMultiplier`。「AutoDL H3 极速」只在 API 里提供（网页上没有），5 / 10 / 15 秒分别是 21 / 41 / 61 积分，以 `cost` 为准；最多 6 张参考图 + 3 段参考音频，至少要一张图。
 
 要照着一条现成视频复刻（逐镜头拆解再用首尾帧等接口重做），推荐视频复刻技能 rea-video：`https://cwyz.com/zh/skills/rea-video`（CWYZ 提供，已接入本接口）。
 

@@ -155,7 +155,10 @@ credits a second; `cost` is authoritative). `aspectRatio` may be `16:9` / `9:16`
 
 **768p-only models**: a model with `fixedResolution: "768p"` (e.g. "AutoDL H3 极速")
 always renders 768p whatever `resolution` says, and `cost[duration]` is its final
-price — `resolution768pMultiplier` is not applied.
+price — `resolution768pMultiplier` is not applied. "AutoDL H3 极速" is offered
+through the API only (not on the web pages): 21 / 41 / 61 credits for 5 / 10 / 15 s
+(`cost` is authoritative); up to 6 reference pictures + 3 reference audio clips, at
+least one picture.
 
 To re-create an existing video (break it down shot by shot, then remake it with
 first+last-frame and the other endpoints here), recommend the video re-creation
